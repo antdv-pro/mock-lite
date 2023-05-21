@@ -1,18 +1,16 @@
-import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose'
+import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 
-import type { HydratedDocument } from 'mongoose'
+import { HydratedDocument } from 'mongoose';
 
-export type UserDocument = HydratedDocument<User>
+export type UserDocument = HydratedDocument<User>;
 @Schema()
 export class User {
   @Prop()
-    name: string
-
+  name: string;
   @Prop()
-    email: string
-
+  email: string;
   @Prop()
-    password: string
+  password: string;
 }
 
-export const UserSchema = SchemaFactory.createForClass(User)
+export const UserSchema = SchemaFactory.createForClass(User);

@@ -5,17 +5,10 @@
   "author": "aibayanyu <aibayanyu@qq.com>",
   "repository": "antdv-pro/antdv-pro",
   "scripts": {
-    "dev:admin": "vite",
-    "dev": "dev:admin",
-    "dev:mock": "pnpm -F servers dev",
-    "docs:dev": "vitepress dev docs",
-    "docs:build": "vitepress build docs",
+    "dev": "vite --host",
     "build": "vue-tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint src --fix",
-    "bump:patch": "changelogen --bump --output CHANGELOG.md --release --patch",
-    "bump:minor": "changelogen --bump --output CHANGELOG.md --release --minor",
-    "bump:major": "changelogen --bump --output CHANGELOG.md --release --major",
     "dir-tree": "esno ./scripts/dir-tree",
     "gen:uno": "esno ./scripts/gen-unocss"
   },

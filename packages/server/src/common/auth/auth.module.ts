@@ -1,7 +1,7 @@
-import { Module } from '@nestjs/common'
-import { JwtModule } from '@nestjs/jwt'
-import { ConfigService } from '@nestjs/config'
-import { AuthService } from '@/common/auth/auth.service'
+import { Module } from '@nestjs/common';
+import { JwtModule } from '@nestjs/jwt';
+import { AuthService } from '@/common/auth/auth.service';
+import { ConfigService } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -13,7 +13,7 @@ import { AuthService } from '@/common/auth/auth.service'
           signOptions: {
             expiresIn: config.get('jwt.expiresIn'),
           },
-        }
+        };
       },
     }),
   ],

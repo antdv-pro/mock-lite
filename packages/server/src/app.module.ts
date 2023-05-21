@@ -1,13 +1,13 @@
-import { Module } from '@nestjs/common'
-import { ConfigModule, ConfigService } from '@nestjs/config'
-import { MongooseModule } from '@nestjs/mongoose'
-import { AppController } from './app.controller'
-import { AppService } from './app.service'
-import { UserController } from './user/user.controller'
-import { UserModule } from './user/user.module'
-import { loadConfig } from '@/utils/load-config'
-import { AuthService } from '@/common/auth/auth.service'
-import { AuthModule } from '@/common/auth/auth.module'
+import { Module } from '@nestjs/common';
+import { AppController } from './app.controller';
+import { AppService } from './app.service';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { MongooseModule } from '@nestjs/mongoose';
+import { loadConfig } from '@/utils/load-config';
+import { AuthService } from '@/common/auth/auth.service';
+import { UserController } from './user/user.controller';
+import { UserModule } from './user/user.module';
+import { AuthModule } from '@/common/auth/auth.module';
 
 @Module({
   imports: [
@@ -21,7 +21,7 @@ import { AuthModule } from '@/common/auth/auth.module'
       useFactory: (config: ConfigService) => {
         return {
           uri: config.get('db.mongo.uri'),
-        }
+        };
       },
     }),
     UserModule,

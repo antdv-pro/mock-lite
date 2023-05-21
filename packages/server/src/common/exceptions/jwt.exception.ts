@@ -1,9 +1,9 @@
-import { HttpException, HttpStatus } from '@nestjs/common'
+import { HttpException, HttpStatus } from '@nestjs/common';
 
-export interface JWTError {
-  code: number
-  message: string
-}
+export type JWTError = {
+  code: number;
+  message: string;
+};
 
 export class JWTException extends HttpException {
   constructor(
@@ -14,12 +14,12 @@ export class JWTException extends HttpException {
       err = {
         code,
         message: err,
-      }
+      };
     }
-    super(err, HttpStatus.OK)
+    super(err, HttpStatus.OK);
   }
 
   static expire() {
-    throw new JWTException('token 过期')
+    throw new JWTException('token 过期');
   }
 }

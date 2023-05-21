@@ -1,5 +1,5 @@
-import { Body, Controller, Get, Post } from '@nestjs/common'
-import type { AuthService } from '@/common/auth/auth.service'
+import { Body, Controller, Get, Post } from '@nestjs/common';
+import { AuthService } from '@/common/auth/auth.service';
 
 @Controller('user')
 export class UserController {
@@ -10,9 +10,9 @@ export class UserController {
     const token = await this.authService.encrypt({
       sub: '1',
       name: 'John Doe',
-    })
+    });
     return {
       token,
-    }
+    };
   }
 }

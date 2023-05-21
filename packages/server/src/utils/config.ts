@@ -1,13 +1,13 @@
 export interface DBConfig {
   mongo: {
-    uri: string
-  }
+    uri: string;
+  };
 }
 
 export interface LoadConfig {
-  db: DBConfig
+  db: DBConfig;
   jwt: {
-    secret: string
-    expiresIn: string
-  }
+    secret: string;
+    expiresIn: string;
+  };
 }

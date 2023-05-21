@@ -1,22 +1,20 @@
-import type { FastifyReply, FastifyRequest } from 'fastify'
+import { FastifyReply, FastifyRequest } from 'fastify';
 
-import type {
-  ArgumentsHost,
-  ExceptionFilter,
-} from '@nestjs/common'
 import {
+  ExceptionFilter,
   Catch,
+  ArgumentsHost,
   HttpStatus,
-} from '@nestjs/common'
+} from '@nestjs/common';
 
 @Catch()
 export class AllExceptionsFilter implements ExceptionFilter {
   catch(exception: Error, host: ArgumentsHost) {
-    const ctx = host.switchToHttp()
-    const response = ctx.getResponse<FastifyReply>()
-    const request = ctx.getRequest<FastifyRequest>()
+    const ctx = host.switchToHttp();
+    const response = ctx.getResponse<FastifyReply>();
+    const request = ctx.getRequest<FastifyRequest>();
 
-    request.log.error(exception)
+    request.log.error(exception);
 
     // 非 HTTP 标准异常的处理。
     response.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
@@ -24,6 +22,6 @@ export class AllExceptionsFilter implements ExceptionFilter {
       // timestamp: new Date().toISOString(),
       // path: request.url,
       msg: '服务器内部错误',
-    })
+    });
   }
 }
