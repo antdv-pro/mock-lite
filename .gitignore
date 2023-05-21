@@ -12,6 +12,7 @@ node_modules/
 !.vscode/launch.json
 !.vscode/extensions.json
 
+.swc
 # Local
 dist
 pnpm-lock.yaml

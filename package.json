@@ -7,7 +7,9 @@
   "author": "",
   "main": "index.js",
   "scripts": {
-    "dev":"",
+    "dev":"run-p dev:server dev:admin",
+    "dev:server":"pnpm -F server dev",
+    "dev:admin":"pnpm -F admin dev",
     "lint":"eslint packages --fix"
   },
   "devDependencies": {
