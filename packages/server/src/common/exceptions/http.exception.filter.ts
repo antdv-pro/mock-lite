@@ -5,6 +5,7 @@ import {
   ArgumentsHost,
   HttpException,
   HttpStatus,
+  ForbiddenException,
 } from '@nestjs/common';
 import {
   BusinessError,
@@ -19,6 +20,20 @@ export class HttpExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse<FastifyReply>();
     // const request = ctx.getRequest<FastifyRequest>();
     const status = exception.getStatus();
+
+    if (exception instanceof ForbiddenException) {
+      const message: any = exception.getResponse();
+      if (typeof message === 'object' && message.message) {
+        const msg = message.message;
+        if (Array.isArray(msg)) {
+          response.status(status).send({
+            code: status,
+            msg: msg[0],
+          });
+          return;
+        }
+      }
+    }
 
     if (exception instanceof JWTException) {
       const res: JWTError = exception.getResponse() as JWTError;

@@ -15,7 +15,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const request = ctx.getRequest<FastifyRequest>();
 
     request.log.error(exception);
-
+    
     // 非 HTTP 标准异常的处理。
     response.status(HttpStatus.INTERNAL_SERVER_ERROR).send({
       code: HttpStatus.INTERNAL_SERVER_ERROR,

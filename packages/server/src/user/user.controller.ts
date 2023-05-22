@@ -1,5 +1,6 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { AuthService } from '@/common/auth/auth.service';
+import { RegisterDto } from '@/user/dto/register.dto';
 
 @Controller('user')
 export class UserController {
@@ -14,5 +15,14 @@ export class UserController {
     return {
       token,
     };
+  }
+
+
+  @Post("register")
+  async register(@Body() body: RegisterDto) {
+    console.log(body);
+    return {
+      message: "register"
+    }
   }
 }
